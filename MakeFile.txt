@@ -1,0 +1,42 @@
+CC=g++
+FLAGS=-c -Wall
+
+game: main.o GameConst.o GameController.o Print.o action.o CheckIn.o creatures.o Player.o position.o TargetManager.o
+	$(CC) main.o GameConst.o GameController.o Print.o action.o CheckIn.o creatures.o Player.o position.o TargetManager.o -o game
+	rm -rf *.o
+
+main.o: ./main/main.cpp
+	$(CC) $(FLAGS) ./main/main.cpp
+	
+GameConst.o: ./GameController/GameConst.cpp
+	$(CC) $(FLAGS) ./GameController/GameConst.cpp
+
+GameController.o: ./GameController/GameController.cpp
+	$(CC) $(FLAGS) ./GameController/GameController.cpp
+
+Print.o:
+	$(CC) $(FLAGS) ./GameController/Print.cpp
+
+action.o: ./actions/action.cpp
+	$(CC) $(FLAGS) ./actions/action.cpp
+	
+	
+CheckIn.o: ./CheckIn/CheckIn.cpp
+	$(CC) $(FLAGS) ./CheckIn/CheckIn.cpp
+	
+creatures.o: ./creatures/creatures.cpp
+	$(CC) $(FLAGS) ./creatures/creatures.cpp
+	
+Player.o: ./player/Player.cpp
+	$(CC) $(FLAGS) ./player/Player.cpp
+	
+position.o: ./position/position.cpp
+	$(CC) $(FLAGS) ./position/position.cpp
+	
+TargetManager.o: ./TargetManager/TargetManager.cpp
+	$(CC) $(FLAGS) ./TargetManager/TargetManager.cpp
+	
+clean:
+	rm -rf *.o game
+	
+
